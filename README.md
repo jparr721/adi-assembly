@@ -17,6 +17,11 @@ For each candidate binary it also reports:
 
 The tool outputs only “vulnerable” binaries by default, but you can list every EXE or silence normal output with flags.
 
+## Building
+```
+dotnet publish -c Release -r win-x64 --self-contained true /p:PublishSingleFile=true /p:TrimUnusedCode=true
+```
+
 ## Running
 
 ```bash
@@ -41,19 +46,6 @@ If no directory is supplied, or you pass `-h`/`--help`, the tool prints a help m
 | `-q` | Suppress normal output; only the paths of vulnerable binaries are printed. |
 | `-a` | Also list non‑vulnerable binaries (i.e., every `.exe` found). |
 | `-h` / `--help` | Show the usage message. |
-
-## Examples
-
-```bash
-# Scan the entire system root, show only findings
-adi_enum.exe -q C:\
-
-# Scan with verbose output and also list all .exe files
-adi_enum.exe -a C:\Program Files
-
-# Scan a specific folder in quiet mode
-adi_enum.exe -q C:\inetpub\wwwroot
-```
 
 Typical output (normal mode):
 
